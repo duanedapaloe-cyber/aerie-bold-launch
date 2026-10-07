@@ -8,7 +8,7 @@ describe("Reward call to action", () => {
     render(<Index />);
 
     const buttons = screen.getAllByRole("link", {
-      name: /explore your reward|let’s take a look/i,
+      name: /claim now|let’s take a look/i,
     });
 
     expect(buttons).toHaveLength(2);
