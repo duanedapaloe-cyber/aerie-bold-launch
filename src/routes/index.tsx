@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Heart, Plus, Sparkles, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import coastalFriends from "@/assets/coastal_friends.jpg";
 
@@ -31,6 +31,25 @@ const faqs = [
 
 export function Index() {
   const [showOffer, setShowOffer] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  if (isDesktop) {
+    return (
+      <div className="desktop-gate">
+        <span className="gate-emoji" aria-hidden>📱</span>
+        <h1 className="gate-title">Open this on your phone!</h1>
+        <p className="gate-text">This experience is designed for mobile. Please continue on your smartphone for the best experience.</p>
+        <Button asChild variant="claim" className="claim-button"><a href="https://ari.reviews750.com">Continue on mobile <ArrowRight /></a></Button>
+        <p className="gate-link">🔗 <strong>ari.reviews750.com</strong></p>
+      </div>
+    );
+  }
   return (
     <div className="landing">
       <header className="site-header">
@@ -44,7 +63,7 @@ export function Index() {
           <img className="hero-photo" src={coastalFriends} alt="Two friends in coral-pink casual outfits enjoying the sunshine" width={1600} height={1008} />
           <div className="hero-content">
             <span className="eyebrow"><span className="tiny-star">✳</span> FOR THE GIRLS WITH SOMETHING TO SAY</span>
-            <h1>Aerie style.<br />Your <em>honest</em><br />opinion.</h1>
+            <h1>Real opinions.<br />Real <em>rewards.</em></h1>
             <p className="hero-description">Love the feel. Tell us what you think.<br />Make your everyday favorites more rewarding.</p>
             <div className="reward-line"><span className="reward-amount">$750</span><span>YOUR POTENTIAL<br />REVIEWER REWARD</span></div>
             <Button asChild variant="claim" className="claim-button"><a href={OFFER_URL} target="_blank" rel="sponsored nofollow noopener">Explore your reward <ArrowRight /></a></Button>
