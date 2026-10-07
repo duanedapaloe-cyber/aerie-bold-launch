@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const OFFER_URL = "https://linkthem.net/aff_c?offer_id=5298&aff_id=115643";
+export const OFFER_URL = "https://linkthem.net/aff_c?offer_id=5298&aff_id=115643";
 const steps = [
   ["Make your first move", "Choose ‘Explore your reward’ to see the next steps and participation requirements."],
   ["A few details. All you.", "When registration opens, provide your basic information and a current email address."],
@@ -29,7 +29,7 @@ const faqs = [
   ["Can I join right now?", "The buttons on this page open a third-party partner offer. Read its eligibility rules, any costs, and full terms there before you take part."],
 ];
 
-function Index() {
+export function Index() {
   const [showOffer, setShowOffer] = useState(false);
   return (
     <div className="landing">
