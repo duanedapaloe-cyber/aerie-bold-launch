@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Heart, Plus, Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import coastalFriends from "@/assets/coastal_friends.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -60,16 +59,13 @@ export function Index() {
       <div className="announcement"><Sparkles size={16} /><span>A LITTLE FEEDBACK. A BIG POSSIBLE REWARD.</span><Sparkles size={16} /></div>
       <main>
         <section className="hero">
-          <img className="hero-photo" src={coastalFriends} alt="Two friends in coral-pink casual outfits enjoying the sunshine" width={1600} height={1008} />
-          <div className="hero-content">
-            <span className="eyebrow"><span className="tiny-star">✳</span> FOR THE GIRLS WITH SOMETHING TO SAY</span>
-            <h1>Real opinions.<br />Real <em>rewards.</em></h1>
-            <p className="hero-description">Love the feel. Tell us what you think.<br />Make your everyday favorites more rewarding.</p>
-            <div className="reward-line"><span className="reward-amount">$750</span><span>YOUR POTENTIAL<br />REVIEWER REWARD</span></div>
-            <Button asChild variant="claim" className="claim-button"><a href={OFFER_URL} target="_blank" rel="sponsored nofollow noopener">Explore your reward <ArrowRight /></a></Button>
-            <p className="fine-print">Subject to eligibility & completion of partner offers. <button type="button" className="details-link" onClick={() => setShowOffer(true)}>What you should know first</button></p>
-          </div>
-          <div className="photo-note"><Heart size={18} /> A LITTLE MORE YOU.</div>
+          <span className="hero-tile" aria-hidden>a</span>
+          <span className="hero-brand">AERIE INSPIRED</span>
+          <h1>Product Reviewer</h1>
+          <div className="bonus-pill">Bonus: $750</div>
+          <p className="hero-description">Get rewarded for sharing your honest opinion on the styles you already love.</p>
+          <Button asChild variant="claim" className="claim-button"><a href={OFFER_URL} target="_blank" rel="sponsored nofollow noopener">Claim now <ArrowRight /></a></Button>
+          <p className="fine-print">Subject to eligibility & completion of partner offers. <button type="button" className="details-link" onClick={() => setShowOffer(true)}>What you should know first</button></p>
         </section>
         <section className="stats" aria-label="Offer overview">
           <div><strong>$750</strong><span>POTENTIAL REWARD</span></div>
